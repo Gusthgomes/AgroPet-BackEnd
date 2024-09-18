@@ -25,7 +25,8 @@ model Product {
 }
 
 model Category {
-  id      String    @id @default(uuid())
-  name    String
-  Product Product[]
+  id          String    @id @default(uuid())
+  name        String
+  description String    @default("")
+  Product     Product[]
 }
