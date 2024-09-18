@@ -7,6 +7,7 @@ import {
 import fastifyCors from "@fastify/cors";
 
 import { createGoalRoute } from "../routes/category/create-category";
+import { getCategoryRoute } from "../routes/category/get-category";
 
 const app = fastify({
   logger: true,
@@ -20,6 +21,7 @@ app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
 app.register(createGoalRoute);
+app.register(getCategoryRoute);
 
 app
   .listen({
