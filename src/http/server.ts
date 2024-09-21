@@ -6,9 +6,12 @@ import {
 } from "fastify-type-provider-zod";
 import fastifyCors from "@fastify/cors";
 
-import { createGoalRoute } from "../routes/category/create-category";
+// Category routes
+import { createCategoryRoute } from "../routes/category/create-category";
 import { getCategoryRoute } from "../routes/category/get-category";
 import { getCategoryByNameRoute } from "../routes/category/get-category-by-name";
+import { updateCategoryRoute } from "../routes/category/update-category";
+import { deleteCategoryRoute } from "../routes/category/delete-category";
 
 const app = fastify({
   logger: true,
@@ -21,9 +24,12 @@ app.register(fastifyCors, {
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
-app.register(createGoalRoute);
+// Category routes
+app.register(createCategoryRoute);
 app.register(getCategoryRoute);
 app.register(getCategoryByNameRoute);
+app.register(updateCategoryRoute);
+app.register(deleteCategoryRoute);
 
 app
   .listen({
