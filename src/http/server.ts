@@ -14,6 +14,9 @@ import { updateCategoryRoute } from "../routes/category/update-category";
 import { deleteCategoryRoute } from "../routes/category/delete-category";
 import { updateAllCategoryRoute } from "../routes/category/update-all-category";
 
+// product routes
+import { createProductRoute } from "../routes/products/create-product";
+
 const app = fastify({
   logger: true,
 }).withTypeProvider<ZodTypeProvider>();
@@ -32,6 +35,9 @@ app.register(getCategoryByNameRoute);
 app.register(updateCategoryRoute);
 app.register(deleteCategoryRoute);
 app.register(updateAllCategoryRoute);
+
+// Product routes
+app.register(createProductRoute);
 
 app
   .listen({
