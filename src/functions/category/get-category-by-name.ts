@@ -1,9 +1,11 @@
 import { db } from "../../db/prisma";
 
-export async function getCategoryByName(name: string) {
+export async function getCategoryByName(searchParams: string) {
   const result = await db.category.findFirst({
     where: {
-      name,
+      name: {
+        contains: searchParams,
+      },
     },
   });
 
