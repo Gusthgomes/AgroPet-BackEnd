@@ -17,6 +17,7 @@ import { updateAllCategoryRoute } from "../routes/category/update-all-category";
 // product routes
 import { createProductRoute } from "../routes/products/create-product";
 import { getProductsRoute } from "../routes/products/get-products";
+import { deleteProductRoute } from "../routes/products/delete-product";
 
 const app = fastify({
   logger: true,
@@ -40,6 +41,7 @@ app.register(updateAllCategoryRoute);
 // Product routes
 app.register(createProductRoute);
 app.register(getProductsRoute);
+app.register(deleteProductRoute);
 
 app
   .listen({
