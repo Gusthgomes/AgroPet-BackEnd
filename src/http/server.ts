@@ -14,12 +14,15 @@ import { updateCategoryRoute } from "../routes/category/update-category";
 import { deleteCategoryRoute } from "../routes/category/delete-category";
 import { updateAllCategoryRoute } from "../routes/category/update-all-category";
 
-// product routes
+// Product routes
 import { createProductRoute } from "../routes/products/create-product";
 import { getProductsRoute } from "../routes/products/get-products";
 import { deleteProductRoute } from "../routes/products/delete-product";
 import { updateProductRoute } from "../routes/products/update-product";
 import { getProductByNameRoute } from "../routes/products/get-product-by-name";
+
+// User routes
+import { createUserRoute } from "../routes/user/create-user";
 
 const app = fastify({
   logger: true,
@@ -46,6 +49,9 @@ app.register(getProductsRoute);
 app.register(deleteProductRoute);
 app.register(updateProductRoute);
 app.register(getProductByNameRoute);
+
+// User routes
+app.register(createUserRoute);
 
 app
   .listen({
