@@ -7,7 +7,8 @@ export async function CreateProduct(
   imageUrls: string[],
   basePrice: number,
   categoryId: string,
-  discountPercentage: number
+  discountPercentage: number,
+  userId: string
 ) {
   try {
     const result = await db.product.create({
@@ -18,6 +19,7 @@ export async function CreateProduct(
         basePrice: new Decimal(basePrice),
         categoryId,
         discountPercentage,
+        userId,
       },
     });
 

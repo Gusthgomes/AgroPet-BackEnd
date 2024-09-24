@@ -9,6 +9,7 @@ const CreateProductSchema = z.object({
   basePrice: z.number().min(0),
   categoryId: z.string(),
   discountPercentage: z.number().min(0).max(100).default(0),
+  userId: z.string().min(1).max(255),
 });
 
 export const createProductRoute: FastifyPluginAsync = async (app) => {
@@ -27,6 +28,7 @@ export const createProductRoute: FastifyPluginAsync = async (app) => {
         basePrice,
         categoryId,
         discountPercentage,
+        userId,
       } = request.body as z.infer<typeof CreateProductSchema>;
 
       try {
@@ -36,7 +38,8 @@ export const createProductRoute: FastifyPluginAsync = async (app) => {
           imageUrls,
           basePrice,
           categoryId,
-          discountPercentage
+          discountPercentage,
+          userId
         );
 
         reply.status(200).send(newProduct);
