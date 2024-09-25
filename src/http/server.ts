@@ -27,6 +27,7 @@ import { getProductByNameRoute } from "../routes/products/get-product-by-name";
 import { createUserRoute } from "../routes/user/create-user";
 import { getUsersRoute } from "../routes/user/get-users";
 import { updateUserRoute } from "../routes/user/update-user";
+import { deleteUserRoute } from "../routes/user/delete.user";
 
 const app = fastify({
   logger: true,
@@ -60,6 +61,7 @@ app.register(getProductByNameRoute);
 app.register(createUserRoute);
 app.register(getUsersRoute);
 app.register(updateUserRoute);
+app.register(deleteUserRoute);
 
 app
   .listen({
