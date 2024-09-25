@@ -6,6 +6,8 @@ import {
 } from "fastify-type-provider-zod";
 import fastifyCors from "@fastify/cors";
 
+import { authPlugin } from "../middleware";
+
 // Category routes
 import { createCategoryRoute } from "../routes/category/create-category";
 import { getCategoryRoute } from "../routes/category/get-category";
@@ -23,6 +25,7 @@ import { getProductByNameRoute } from "../routes/products/get-product-by-name";
 
 // User routes
 import { createUserRoute } from "../routes/user/create-user";
+import { getUsersRoute } from "../routes/user/get-users";
 
 const app = fastify({
   logger: true,
@@ -34,6 +37,8 @@ app.register(fastifyCors, {
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+app.register(authPlugin);
 
 // Category routes
 app.register(createCategoryRoute);
@@ -52,6 +57,7 @@ app.register(getProductByNameRoute);
 
 // User routes
 app.register(createUserRoute);
+app.register(getUsersRoute);
 
 app
   .listen({
